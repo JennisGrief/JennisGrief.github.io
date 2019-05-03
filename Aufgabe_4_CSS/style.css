@@ -13,7 +13,7 @@ p {
     color: white
     font-family: Noto Sans, Arial, sans-serif;
     background-color: :-moz-only-whitespace
-    fill-rule: initial;
+    fill-rule: initial; 
 }
 
 footer {
@@ -46,13 +46,14 @@ section {
     height: 25rem;
     overflow: scroll;
     font-size: 30%;
-    background-color: white;
+    background-color: khaki;
     width: 23%;
     float: left;
     margin-left: 1%;
     margin-right: 1%;
     margin-bottom: 1%;
-    margin-top: 1%
+    margin-top: 1%;
+    border-block-end-color: bisque,
 }
 img  {
     width: 100%;
@@ -63,5 +64,6 @@ h2   {
 }
 ul {
     list-style: none;
+    text-align: inherit;
 }
     
