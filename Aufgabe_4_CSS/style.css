@@ -5,26 +5,27 @@ header {
     
 }
 body {
-    background-color: white
+    background-color: lightgoldenrodyellow;
 }
 p {
     text-align: center;
     font-size: 25px;
     color: white
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Noto Sans, Arial, sans-serif;
     background-color: :-moz-only-whitespace
-    fill-rule: initial; 
+    fill-rule: initial;
 }
 
 footer {
     
     width: 100%;
-    position: fixed;
-    bottom: 0;
+  float: left;
+  clear: both;
+  position: -webkit-sticky;
+  margin-bottom: 0ch;
 }
 nav {
     font-size: 120%;
-
 }
 main {
     margin-right: 20%;
@@ -37,7 +38,6 @@ aside {
     clear: both;
     margin-top: 120px;
     background-color: grey;
-    position: fixed;
 }
 aside:hover {
     width: 20%;
@@ -46,19 +46,22 @@ section {
     height: 25rem;
     overflow: scroll;
     font-size: 30%;
-    background-color: #ddddd9;
-    width: 20%;
+    background-color: white;
+    width: 23%;
     float: left;
     margin-left: 1%;
     margin-right: 1%;
     margin-bottom: 1%;
     margin-top: 1%
-    
-
 }
 img  {
     width: 100%;
     height: 50%;
-
+}
+h2   {
+    font-size: 20px
+}
+ul {
+    list-style: none;
 }
     
