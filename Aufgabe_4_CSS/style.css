@@ -65,7 +65,10 @@ h2  {
 ul {
     list-style: none;
     text-align: inherit;
-}
+    height: 20px;
+overflow: hidden;
+background-color: brown;
+} 
 h1 {
     font-size: 50px;
 
@@ -75,6 +78,6 @@ height: 20px;
 overflow: hidden;
 background-color: brown;
 } 
-#Nav:hover {
-overflow height:30px;
+ul:hover {
+height: 40px;
 } 
