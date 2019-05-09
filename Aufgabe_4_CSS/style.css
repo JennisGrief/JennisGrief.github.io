@@ -1,11 +1,11 @@
 header {
     width: 100%;
     color: black;
-    background-color: grey
+    background-color: royalblue
     
 }
 body {
-    background-color: lightgoldenrodyellow;
+    background-color: lightgray;
 }
 p {
     text-align: center;
@@ -37,7 +37,7 @@ aside {
     float: left;
     clear: both;
     margin-top: 120px;
-    background-color: grey;
+    background-color: royalblue;
 }
 aside:hover {
     width: 20%;
@@ -59,11 +59,15 @@ img  {
     width: 100%;
     height: 50%;
 }
-h2   {
+h2  {
     font-size: 20px
 }
 ul {
     list-style: none;
     text-align: inherit;
+}
+h1 {
+    font-size: 50px;
+
 }
     
