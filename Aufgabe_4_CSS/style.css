@@ -1,8 +1,11 @@
 header {
     width: 100%;
     color: black;
-    background-color: royalblue
-    
+    background-color: red;   
+}
+ul {
+    height: 5px;
+
 }
 body {
     background-color: lightgray;
@@ -70,14 +73,6 @@ overflow: hidden;
 background-color: brown;
 } 
 h1 {
-    font-size: 50px;
-
+    font-size: 50px;  
 }
-#Nav {
-height: 20px;
-overflow: hidden;
-background-color: brown;
-} 
-ul:hover {
-height: 40px;
-} 
+

@@ -2,7 +2,12 @@ header {
     width: 100%;
     color: black;
     background-color: royalblue
-    
+}
+ul { overflow: hidden;
+    height: 20px;   
+}
+ul:hover {
+    height: 200px;
 }
 body {
     background-color: lightgray;
