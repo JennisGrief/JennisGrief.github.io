@@ -1,18 +1,16 @@
 header {
     width: 100%;
     color: black;
-    background-color: red;   
+    background-color: black;   
 }
 ul {
     height: 5px;
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    margin: 10em;
+    padding: 10em;
     width: 200px;
     background-color: #f1f1f1;
-    height: 100%; 
-    position: fixed; 
-    overflow: auto;
+    overflow: hidden;
 }
 li a {
     display: block;
@@ -40,9 +38,7 @@ p {
     background-color: :-moz-only-whitespace
     fill-rule: initial; 
 }
-
 footer {
-    
     width: 100%;
   float: left;
   clear: both;
@@ -87,58 +83,9 @@ img  {
 h2  {
     font-size: 20px
 }
-ul {
-    list-style: none;
-    text-align: inherit;
-    height: 20px;
-overflow: hidden;
-background-color: brown;
 } 
 h1 {
     font-size: 50px;  
 }
-@media screen and (min-width: 63em){
-    main{
-        width: 80%;
-        margin-left: 20%;
-        margin-top: 7em;
-    }
-    section{
-        width: 49%;
-        float:left;
-        margin-left: 2%;
-    }
-    aside{
-        background-color: #594186;
-        width: 15%;
-        position: fixed;
-        padding: 1%;
-        margin-top: 3em;
-    }
-    aside:hover{
-        width: 17.5%;
-    }
-    section:first-of-type,section:nth-of-type(2n+1){
-        margin-left: 0%;
-    }
-}
-@media screen and (min-width: 90em){
-    main{
-        width: 60%;
-        margin-left: 20%;
-    }
-    section{
-        width: 23.5%;
-        float:left;
-        margin-left: 2%;
-    }
 
-    section:nth-of-type(2n+1){
-        margin-left: 2%;
-    }
-
-    section:first-of-type,section:nth-of-type(4n+1){
-        margin-left: 0%;
-        clear:both;
-    }
 
