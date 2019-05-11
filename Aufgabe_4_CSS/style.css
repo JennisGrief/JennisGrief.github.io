@@ -75,4 +75,29 @@ background-color: brown;
 h1 {
     font-size: 50px;  
 }
+@media screen and (min-width: 63em){
+    main{
+        width: 80%;
+        margin-left: 20%;
+        margin-top: 7em;
+    }
+    section{
+        width: 49%;
+        float:left;
+        margin-left: 2%;
+    }
+    aside{
+        background-color: #594186;
+        width: 15%;
+        position: fixed;
+        padding: 1%;
+        margin-top: 3em;
+    }
+    aside:hover{
+        width: 17.5%;
+    }
+    section:first-of-type,section:nth-of-type(2n+1){
+        margin-left: 0%;
+    }
+}
 
