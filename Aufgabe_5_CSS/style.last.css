@@ -51,6 +51,9 @@ padding-top: 20px;
 margin right: 0px;
 position: relative;
 }
+aside :hover {
+    width: 16%;
+}
 main {
     margin-right: 20%;
     margin-left: 20%;
@@ -79,11 +82,18 @@ footer {
     bottom: 0;
     width: 100%;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
     section {
-        width: 100%
-        
+        width: 100%;
     }
-
+    aside {
+        width: 100%;
+    }
+header {
+    width: 100%;
+}
+main {
+    width: 100%
+}
 
 }
