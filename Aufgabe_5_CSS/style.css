@@ -8,23 +8,20 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: white
+    background-color: white;
     color: #111;
-    height: 10%;
+    height: 50px;
   }
-li a {
+  li a {
     display: block;
     color: black;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
   }
+
   li a:hover {
-    background-color: #111;
-  }
-  .active {
-    background-color: #4CAF50;
-    color: white;
+    background-color: lightgray;
   }
 body {
     background-color: lightgray;
@@ -94,5 +91,7 @@ h1 {
     margin-bottom: 20px;
     background-color: aliceblue;
 }
-
-
+ul :hover {
+    height: 200px;
+    overflow: scroll;
+}
