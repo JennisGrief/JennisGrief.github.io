@@ -75,7 +75,15 @@ width: 100%;
 align-self: center;
 }
 footer {
-    position:absolute;
+    position:fixed;
     bottom: 0;
     width: 100%;
+}
+@media only screen and (max-width: 768px) {
+    section {
+        width: 100%
+        
+    }
+
+
 }
