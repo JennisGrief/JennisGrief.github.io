@@ -82,7 +82,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
-@media  screen and (max-width: 1300px) {
+@media  screen and (max-width: 1000px) {
     section {
         width: 100%;
     }
@@ -99,7 +99,7 @@ main {
     width: 100%;
 }
 }
-@media  screen and (max-width: 1500px) {
+@media  screen and (max-width: 1300px) {
     section {
         width: 300px
     }
