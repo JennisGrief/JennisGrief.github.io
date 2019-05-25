@@ -31,7 +31,7 @@ function changeStuff(){
     document.getElementById(_id).innerHTML += "u"; 
     document.getElementById(_id).className = "centered";
 }
-document.write("Heeeey ich bin auch so ein Typescript Ding");
+document.write("         Heeeey ich bin auch so ein Typescript Ding"); 
 window.onclick = function classchange() //Hier wird dann die Klasse gewechselt
 {
   console.log("Puh Class Change")

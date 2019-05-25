@@ -24,7 +24,7 @@ function changeStuff() {
     document.getElementById(_id).innerHTML += "u";
     document.getElementById(_id).className = "centered";
 }
-document.write("Heeeey ich bin auch so ein Typescript Ding");
+document.write("         Heeeey ich bin auch so ein Typescript Ding");
 window.onclick = function classchange() {
     console.log("Puh Class Change");
     document.getElementById("Class-changer").innerHTML = "Soeben habe ich meine Klasse gewechselt";
