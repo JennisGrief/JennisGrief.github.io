@@ -21,10 +21,10 @@
 interface Monster {
     monsterName : string; // Name des Monsters
     monsterHealthPoints : number; // Lebenspunkte
+    monsterAttackPoints : number; // "Angriffspunkte" zusammen mit dem Image sollte das doch den zwei neuen Kategorien entsprechen 
     monsterExperience : number; // Erfahrungspunkte bei besiegen des Monsters
     monsterModifier : string []; // Monster-Verstärker. Diese sind in diesem Fall nur Text! (Da hier einfacher Zufall für die Auswahl genutzt wird, kann der gleiche Eintrag auch doppelt vorkommen)
     monsterImage : string;  //Hier kommt das bild yooo
-
 }
 
 
@@ -73,7 +73,7 @@ function generateMonster()
     let newMonsterXP : number = generateMonsterXP();                    // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
     let newMonsterModifier : string[] = generateMonsterModifer();       // Eigens-gebaute Funktion, welche ein string-Array zurück gibt.
     let newMonsterImage : string = generateMonsterImage();              // Eigens gebaute Funktion, welche....
-
+    let newMonsterAp : number = generateMonsterAp();
 
     let newMonster : Monster = {                                        // Monster wird erstellt.
         monsterName : newMonsterName, 
@@ -81,7 +81,7 @@ function generateMonster()
         monsterExperience : newMonsterXP,
         monsterModifier : newMonsterModifier,
         monsterImage : newMonsterImage, 
-
+        monsterAttackPoints : newMonsterAp,
     };
 
     monsterArray.push(newMonster);                                      // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
@@ -130,10 +130,7 @@ function monsterGenerateHTML()
 // Muss mit einer Zahl aufgerufen werden: getRNGNumber(5); // Liefert eine ganze Zahl zwischen 0 bis 4 zurück.
 function getRNGNumber(_maxNumber : number) : number
 {
-    let rngNumber : number = Math.random();                             // Macht folgendes: Generiere eine zufällige Komma-Zahl zwischen 0 - 1.
-    rngNumber = rngNumber * _maxNumber;                                 // Multipliziere diese Zahl mit der Länge des entsprechenden Array (hier: _maxNumber, ein Parameter, siehe in der runden Klammer der Funktion).
-    rngNumber = Math.floor(rngNumber);                                  // Floore diese Zahl, damit diese nun Ganzzahlig ist.                                                   // Diese Zeile ist einer der drei Fehler in den Funktionen. Ich bin mal so frei und vermerke das hier. Einfach löschen und alles wird besser.
-    return rngNumber;                                                   // Gebe diese Zahl zurück, Funktion kann ähnlich einer Variable in Rechnungen genutzt werden.
+    return Math.floor(Math.random() * _maxNumber);   //so das müsste das gleiche machen nur ein wenig kleiner 
 }
 
 
@@ -169,7 +166,11 @@ function generateMonsterHitPoints() : number
     let tempMonsterHP : number = 1 + getRNGNumber(10);
     return tempMonsterHP;
 }
-
+function generateMonsterAp() : number
+{
+  let tempMonsterAp : number = 2 +   getRNGNumber(5);
+  return tempMonsterAp;
+}
 
 function generateMonsterXP() : number
 {
@@ -189,7 +190,7 @@ function generateMonsterModifer() : string[]
 }
 function generateMonsterImage() : string
 {
-    let rngNumber : number = getRNGNumber(monsterImage.length);                 // Diese Funktion gibt einen zufälligen Bild-Pfad zurück.
+    let rngNumber : number = getRNGNumber(monsterImage.length);                 // Alsooooo ich muss sagen ich kann mir nicht so genau erklären wieso das mit diesen bildern nicht so funktioniert?
     return monsterImage[rngNumber];   
 }
 // Aufgerufen, wenn man auf den Button klickt.
@@ -216,4 +217,10 @@ function updatePlayerLevel()
     document.getElementById("xpCounter").innerHTML = "Player-Level: " + tempLevel + " (XP: " + playerXP + " / " + playerXPperLevel + ")";       // Baue den String für die Spieler-Info zusammen
     console.log("Spieler " + playerName + " hat nun Level " + tempLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)");        // Spieler-Level in der Konsole.
 }
-//
+
+
+let list = ["oof", "bar"]; 
+list.push("baz");
+
+["oof", "bar", "baz"]
+console.log("list");
