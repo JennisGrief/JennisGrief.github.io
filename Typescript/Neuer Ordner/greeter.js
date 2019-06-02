@@ -1,4 +1,4 @@
-console.log('Dokument ist vermutlich noch nicht geladen');
+console.log("Dokument ist vermutlich noch nicht geladen");
 window.onload = function () {
     console.log('Dokument ist geladen');
     document.getElementById("demo").addEventListener("click", changeStuff);
@@ -11,11 +11,11 @@ function changeStuff() {
         Syntax beachten!
         Hinter (fast) jeder Zeile kommt ein Semikolon. Später werden wir andere Fälle lernen.
     */
-    var _id = "demo"; // Unterstrich vor Variable ist keine Konvention. Konvention für Variablen-Namen ist hier normalerweise der camelCase.
-    var stringVariable = "";
-    var name = "adrian";
-    var number1 = 1;
-    var number2 = 2;
+    let _id = "demo"; // Unterstrich vor Variable ist keine Konvention. Konvention für Variablen-Namen ist hier normalerweise der camelCase.
+    let stringVariable = "";
+    let name = "adrian";
+    let number1 = 1;
+    let number2 = 2;
     // Ein paar Zuweisungen - gehen sowohl mit strings als auch mit numbers!
     number1 = 2; // Kommentar
     number1 = number1 + 2; // Werte können sich selbst auch nehmen, um sich "neu" zu berechnen
@@ -23,8 +23,8 @@ function changeStuff() {
     name += name;
     console.log(name);
     console.log("Diese Variable ist leer: " + stringVariable);
-    var _numberTotal = number1 + number2;
-    var _boolean = true; // kann nur true oder false sein.
+    let _numberTotal = number1 + number2;
+    let _boolean = true; // kann nur true oder false sein.
     console.log(number1 + number2);
     console.log(number1 + _id);
     document.getElementById(_id).innerHTML += " Stuff"; // Beispiel: html-string-"Wert" wird durch stuff erweitert.
