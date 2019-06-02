@@ -41,7 +41,7 @@ let prefix : string[] = ["Wald-", "Seuchen-", "Uralte(s) ", "Gift-", "Brennende(
 let monsterName : string[] = ["Ratte", "Nagetier", "Ungeziefer"]; // length = 3, da 3 Einträge. Von 0-2.
 let suffix : string[] = [" des Verderbens", " aus der Hölle", " der Lethalität", " mit Rheuma", " der Redundanz", " der Zerberstung"]; // length = 6, da hier 6 Einträge sind. Von 0-5.
 
-let monsterSrc : string[] = imagePush(); //so das brauchen wir auch noch für die wechselnden bildchen
+let monsterImage : string[] = ["imgs/monsterImage1.png,imgs/monsterImage2.png,imgs/monsterImage3.png"]; //length=2
 
 let monsterModifers : string[] = ["Ist nervig", "Linkshänder", "Bier-Connoisseur", "Verfehlt häufig", "Prokrastiniert", "Müde", "Verwirrt", "Wasserscheu", "Bipolar", "Hat Schnupfen", "Verläuft sich oft"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster.
 
@@ -103,7 +103,7 @@ function monsterGenerateHTML()
     holdingDiv.appendChild(monsterMod);                                // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
 
     let monsterImg : HTMLElement = document.createElement("img");       // Erstelle ein <img>-Element
-    monsterImg.setAttribute("src", "imgs/"+ monsterArray[monsterArray.length - 1].monsterImage);    // Der Pfad für das Bild muss über setAttribute festgelegt werden. Der Bildpfad kann natürlich auch anders aussehen.
+    monsterImg.setAttribute("src", monsterArray[monsterArray.length - 1].monsterImage);    // Der Pfad für das Bild muss über setAttribute festgelegt werden. Der Bildpfad kann natürlich auch anders aussehen.
     monsterImg.setAttribute("alt", "Schreckliches Monster");            // Das alt für das Bild wird hier festgelegt.
     holdingDiv.appendChild(monsterImg);                                 // Füge das Bild zu dem holding-div hinzu (<div>, welche ein paar Zeilen zuvor erstellt worden ist)
 
@@ -176,7 +176,6 @@ function generateMonsterXP() : number
     return tempMonsterXP;
 }
 
-
 // Wird für die Erstellung der Monster-Modifizierer aufgerufen.
 // Liefert ein Array mit zwei Einträgen zurück.
 function generateMonsterModifer() : string[]
@@ -188,9 +187,8 @@ function generateMonsterModifer() : string[]
 }
 function generateMonsterImage() : string
 {
-    let rngNumber : number = getRNGNumber(monsterSrc.length);
-    let generatedMonsterImage : string = monsterSrc[rngNumber];
-    return generatedMonsterImage;
+    let rngNumber : number = getRNGNumber(monsterImage.length);                 // Diese Funktion gibt einen zufälligen Bild-Pfad zurück.
+    return monsterImage[rngNumber];   
 }
 function imagePush() : string[]
 {
