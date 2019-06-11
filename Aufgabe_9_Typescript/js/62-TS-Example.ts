@@ -38,12 +38,11 @@ let prefix : string[] = ["Wald-", "Seuchen-", "Uralte(s) ", "Gift-", "Brennende(
 let monsterName : string[] = [" Wiesel", "Karl", "Ungeziefer","Paul","Troll","Ork"]; // length = 5, da 6 Einträge. Von 0-5
 let suffix : string[] = [" des Verderbens", " aus der Hölle", " der Lethalität", " mit Rheuma", " der Redundanz", " der Zerberstung", "des Todes" ,"aus China" ,"aus der Hölle","Der Zerfickung","der Hoffnungslosigkeit"]; // length = 10, da hier 11 Einträge sind. Von 0-10.
 let monsterModifers : string[] = ["Ist nervig", "Linkshänder", "Bier-Connoisseur", "Verfehlt häufig", "Prokrastiniert", "Müde", "Verwirrt", "Wasserscheu", "Bipolar", "Hat Schnupfen", "Verläuft sich oft"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster.
-let Images : string[] = ["imgs/loewe.png","imgs/elefant.png","imgs/frankenstein.png","imgs/female.png","imgs/boss.png","imgs/fluschel.png","imgs/dasAuge.png","imgs/braun.png","imgs/bigMouth.png","imgs/zunge.png"];
+let Images : string[] = ["imgs/loewe.png","imgs/elefant.png","imgs/frankenstein.png","imgs/female.png","imgs/boss.png","imgs/fluschel.png","imgs/dasAuge.png","imgs/braun.png","imgs/bigMouth.png","imgs/zunge.png","imgs/gargoyle.png","imgs/auge.png","imgs/giant.png","imgs/baum.png","imgs/drache.png"];
 
 // -- Initialisierung für viele/variable Anzahl an Monster --
 let monsterArray : Monster[] = []; // Das Haupt-Array wurde erstellt und initialisiert!
 console.log(monsterArray ); // Gebe das Monster-Array einmal zu beginn aus. Es sollte leer sein.
-
 
 // ----------- Funktionen ----------- //
 // INSGESAMT EINGEBAUTE FEHLER bei den Funktionen: III (3 / drei)
@@ -63,6 +62,10 @@ window.onload = function () {
 // Ruft eine Funktion auf, welche dann das entsprechende HTML erzeugt.
 function generateMonster()
 {
+    let monsterNumber : number = getRNGNumber(3) + 1; // Wieviele neue Monster erzeugt werden (Zufallszahl von 1-3)
+
+    for (let i : number = 0; i < monsterNumber; i++){
+
     let newMonsterName : string = generateMonsterName();                // Eigens-gebaute Funktion, welche einen string zurück gibt.
     let newMonsterHP : number = generateMonsterHitPoints();             // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
     let newMonsterXP : number = generateMonsterXP();                    // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
@@ -219,4 +222,4 @@ let list = ["oof", "bar"];
 list.push("baz");
 
 ["oof", "bar", "baz"]
-console.log("list");
+console.log("list");  }
