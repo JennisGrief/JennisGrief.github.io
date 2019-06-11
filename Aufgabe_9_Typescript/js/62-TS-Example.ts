@@ -38,7 +38,7 @@ let prefix : string[] = ["Wald-", "Seuchen-", "Uralte(s) ", "Gift-", "Brennende(
 let monsterName : string[] = [" Wiesel", "Karl", "Ungeziefer","Paul","Troll","Ork"]; // length = 5, da 6 Einträge. Von 0-5
 let suffix : string[] = [" des Verderbens", " aus der Hölle", " der Lethalität", " mit Rheuma", " der Redundanz", " der Zerberstung", "des Todes" ,"aus China" ,"aus der Hölle","Der Zerfickung","der Hoffnungslosigkeit"]; // length = 10, da hier 11 Einträge sind. Von 0-10.
 let monsterModifers : string[] = ["Ist nervig", "Linkshänder", "Bier-Connoisseur", "Verfehlt häufig", "Prokrastiniert", "Müde", "Verwirrt", "Wasserscheu", "Bipolar", "Hat Schnupfen", "Verläuft sich oft"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster.
-let Images : string[] = ["imgs/loewe.png","imgs/elefant.png","imgs/frankenstein.png","imgs/female.png","imgs/boss.png","imgs/fluschel.png"];
+let Images : string[] = ["imgs/loewe.png","imgs/elefant.png","imgs/frankenstein.png","imgs/female.png","imgs/boss.png","imgs/fluschel.png","imgs/dasAuge.png","imgs/braun.png","imgs/bigMouth.png","imgs/zunge.png"];
 
 // -- Initialisierung für viele/variable Anzahl an Monster --
 let monsterArray : Monster[] = []; // Das Haupt-Array wurde erstellt und initialisiert!
