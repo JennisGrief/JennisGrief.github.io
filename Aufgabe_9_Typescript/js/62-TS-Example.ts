@@ -10,9 +10,6 @@
 // Hilfe: Benutzt auf Verdacht ein Konsolen-Log oder ruft die Variable in der Konsole des Browsers auf.
 // Hilfe2: Betrachtet den umliegenden Code. Trackt die Werte von Variablen, falls euch etwas komisch vorkommt!
 
-// ------- interfaces --------- //
-// INSGESAMT EINGEBAUTE FEHLER beu den interfaces: Keine. (0 / null)
-
 // Monster sind vielfältig und können sehr unterschiedlich sein. Dennoch werden sie durch allgemeine Attribute, wie Name und Lebenspunkte, vereint.
 // Deshalb wird hier ein interface genutzt!
 // Ein interface erlaubt das erstellen von einem ungefährem Haupt-Objekt.
@@ -41,7 +38,7 @@ let prefix : string[] = ["Wald-", "Seuchen-", "Uralte(s) ", "Gift-", "Brennende(
 let monsterName : string[] = [" Wiesel", "Karl", "Ungeziefer","Paul","Troll","Ork"]; // length = 5, da 6 Einträge. Von 0-5
 let suffix : string[] = [" des Verderbens", " aus der Hölle", " der Lethalität", " mit Rheuma", " der Redundanz", " der Zerberstung", "des Todes" ,"aus China" ,"aus der Hölle","Der Zerfickung","der Hoffnungslosigkeit"]; // length = 10, da hier 11 Einträge sind. Von 0-10.
 let monsterModifers : string[] = ["Ist nervig", "Linkshänder", "Bier-Connoisseur", "Verfehlt häufig", "Prokrastiniert", "Müde", "Verwirrt", "Wasserscheu", "Bipolar", "Hat Schnupfen", "Verläuft sich oft"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster.
-let Images : string[] = ["imgs/loewe.png","imgs/elefant.png","imgs/frankenstein.png"];
+let Images : string[] = ["imgs/loewe.png","imgs/elefant.png","imgs/frankenstein.png","imgs/female.png","imgs/boss.png","imgs/fluschel.png"];
 
 // -- Initialisierung für viele/variable Anzahl an Monster --
 let monsterArray : Monster[] = []; // Das Haupt-Array wurde erstellt und initialisiert!
