@@ -10,11 +10,11 @@ let playerName = "Spieler"; // Ein paar globale Variablen, welche den Spieler da
 let playerXP = 0; // Stellt die gesammelte Erfahrung des Spielers dar.
 let playerXPperLevel = 500; // Da es nur einen Spieler gibt, ergibt sich noch nicht viel Sinn darin, für den Spieler ein interface (im Sinne der Programmierung) zu erstellen.
 // Mehrere Arrays, welche jeweils Bauteile für Namen oder Eigenschaften der Monster beinhalten.
-let prefix = ["Wald-", "Seuchen-", "Uralte(s) ", "Gift-", "Brennende(s) ", "Kniescheibenzertrümmernde(s)", "Cooles", "littes", "Mächtiges", "Schwaches", "Suchendes"]; // length = 10
+let prefix = ["Wald-", "Seuchen-", "Uralte(s) ", "Gift-", "Brennende(s) ", "Kniescheibenzertrümmernde(s)", "Cooles ", "littes ", "Mächtiges ", "Schwaches", "Suchendes"]; // length = 10
 let monsterName = [" Wiesel", "Karl", "Ungeziefer", "Paul", "Troll", "Ork"]; // length = 5, da 6 Einträge. Von 0-5
-let suffix = [" des Verderbens", " aus der Hölle", " der Lethalität", " mit Rheuma", " der Redundanz", " der Zerberstung", "des Todes", "aus China", "aus der Hölle", "Der Zerfickung", "der Hoffnungslosigkeit"]; // length = 10, da hier 11 Einträge sind. Von 0-10.
+let suffix = [" des Verderbens", " aus der Hölle", " der Lethalität", " mit Rheuma", " der Redundanz", " der Zerberstung", " des Todes", " aus China", " aus der Hölle", " der Zerfickung", " der Hoffnungslosigkeit"]; // length = 10, da hier 11 Einträge sind. Von 0-10.
 let monsterModifers = ["Ist nervig", "Linkshänder", "Bier-Connoisseur", "Verfehlt häufig", "Prokrastiniert", "Müde", "Verwirrt", "Wasserscheu", "Bipolar", "Hat Schnupfen", "Verläuft sich oft"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster.
-let Images = ["imgs/loewe.png", "imgs/elefant.png", "imgs/frankenstein.png", "imgs/female.png", "imgs/boss.png", "imgs/fluschel.png", "imgs/dasAuge.png", "imgs/braun.png", "imgs/bigMouth.png", "imgs/zunge.png", "imgs/gargoyle.png", "imgs/auge.png", "imgs/giant.png", "imgs/baum.png", "imgs/drache.png"];
+let Images = ["imgs/loewe.png", "imgs/elefant.png", "imgs/frankenstein.png", "imgs/female.png", "imgs/boss.png", "imgs/fluschel.png", "imgs/dasAuge.png", "imgs/braun.png", "imgs/bigMouth.png", "imgs/zunge.png", "imgs/gargoyle.png", "imgs/auge.png", "imgs/giant.png", "imgs/baum.png", "imgs/drache.png", "imgs/werewolf.png"];
 // -- Initialisierung für viele/variable Anzahl an Monster --
 let monsterArray = []; // Das Haupt-Array wurde erstellt und initialisiert!
 console.log(monsterArray); // Gebe das Monster-Array einmal zu beginn aus. Es sollte leer sein.
@@ -74,6 +74,9 @@ function generateMonster() {
         'click', function () {
             fightMonster(monsterCount); // Wenn das Monster erstellt wird erhält die Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.
         }, false); // Ignoriert das false.
+        let monsterHP = document.createElement("p");
+        monsterHP.innerHTML = "Lebenspunkte: " + monsterArray[length - 1].monsterHealthPoints;
+        holdingDiv.appendChild(monsterHP);
     }
     // Wird für den Zugriff auf eine zufällige Stelle in einem Array aufgerufen.
     // [ ] Optionale Aufgabe: verkleinere diesen Code auf eine Zeile mit nur einem Semikolon!
@@ -146,4 +149,5 @@ function generateMonster() {
     ["oof", "bar", "baz"];
     console.log("list");
 }
+;
 //# sourceMappingURL=62-TS-Example.js.map
