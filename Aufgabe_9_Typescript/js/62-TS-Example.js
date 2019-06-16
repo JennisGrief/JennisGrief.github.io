@@ -45,7 +45,7 @@ function generateMonster() {
         let newMonsterXP = generateMonsterXP(); // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
         let newMonsterModifier = generateMonsterModifer(); // Eigens-gebaute Funktion, welche ein string-Array zurück gibt.
         let newMonsterAp = generateMonsterAp();
-        let newImage;
+        let newMonsterImage = generateMonsterImage();
         let newMonsterItem = generateMonsterItem();
         let newMonster = {
             monsterName: newMonsterName,
@@ -53,7 +53,7 @@ function generateMonster() {
             monsterExperience: newMonsterXP,
             monsterModifier: newMonsterModifier,
             monsterAttackPoints: newMonsterAp,
-            monsterImage: newImage,
+            monsterImage: newMonsterImage,
             monsterItem: newMonsterItem,
         };
         monsterArray.push(newMonster); // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
@@ -92,17 +92,17 @@ function monsterGenerateHTML(count) {
     let monsterMod = document.createElement("p"); // Generiere einen <p>
     monsterMod.innerHTML = monsterArray[count - 1].monsterModifier[0] + ", " + monsterArray[count - 1].monsterModifier[1]; // Inhalt des <p>: Monster-Modifizierer null und eins
     holdingDiv.appendChild(monsterMod); // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
-    let monsterImg = document.createElement("img"); // Erstelle ein <img>-Element
-    monsterImg.setAttribute("src", Images[generatedImage()]); // Der Pfad für das Bild muss über setAttribute festgelegt werden. Der Bildpfad kann natürlich auch anders aussehen.
-    monsterImg.setAttribute("alt", "Schreckliches Monster"); // Das alt für das Bild wird hier festgelegt.
-    holdingDiv.appendChild(monsterImg);
+    let monsterIcon = document.createElement("img"); // Erstelle ein <img>-Element
+    monsterIcon.setAttribute("src", monsterArray[count - 1].monsterImage); // Der Pfad für das Bild muss über setAttribute festgelegt werden. Der Bildpfad kann natürlich auch anders aussehen.
+    monsterIcon.setAttribute("alt", "Schreckliches Monster"); // Das alt für das Bild wird hier festgelegt.
+    holdingDiv.appendChild(monsterIcon);
     let monsterItem = document.createElement("p");
     monsterItem.innerHTML = "vorsicht! es/sie hat ein " + monsterArray[count - 1].monsterItem;
     holdingDiv.appendChild(monsterItem);
     let monsterBtn = document.createElement("BUTTON"); // Erstelle ein <button>-Element
     monsterBtn.innerHTML = "Monster bekämpfen! "; // Verändere den Inhalt des HTML-Elementes. Der genaue Text ist dabei euch überlassen.
     holdingDiv.appendChild(monsterBtn);
-    let monsterCount = count;
+    let monsterCount = count - 1;
     monsterBtn.addEventListener(// Füge dem Monster eine Funktion hinzu.
     'click', function () {
         fightMonster(monsterCount); // Wenn das Monster erstellt wird erhält die Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.
@@ -134,9 +134,9 @@ function generateMonsterName() {
     generatedMonsterName += suffix[rngNumber]; // Füge den Monsternamen zusammen: nimm aus dem entsprechenden Array mit der zufallsgenerierten Zahl den entsprechenden Eintrag.
     return generatedMonsterName;
 }
-function generatedImage() {
-    let tempImage = getRNGNumber(Images.length);
-    return tempImage;
+function generateMonsterImage() {
+    let rngNumber = getRNGNumber(Images.length);
+    return Images[rngNumber];
 }
 // Wird für die Monster-Lebenspunkte aufgerufen.
 // Liefert eine variierende Zahl zurück.
@@ -173,6 +173,7 @@ function fightMonster(_index) {
     console.log("Spieler kämpft gegen Monster und gewinnt!"); // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     console.log("Das Monster weigert sich zu verschwinden."); // Wird nächste Stunde erweitert.
     playerXP += monsterArray[_index - 1].monsterExperience; // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
+    monsterArray.splice(_index, 1);
     updatePlayerLevel();
     updateHTML();
 }

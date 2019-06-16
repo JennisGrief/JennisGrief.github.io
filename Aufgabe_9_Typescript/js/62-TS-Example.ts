@@ -78,7 +78,7 @@ function generateMonster()
     let newMonsterXP : number = generateMonsterXP();                    // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
     let newMonsterModifier : string[] = generateMonsterModifer();       // Eigens-gebaute Funktion, welche ein string-Array zurück gibt.
     let newMonsterAp : number = generateMonsterAp();
-    let newImage : string ;
+    let newMonsterImage : string = generateMonsterImage();
     let newMonsterItem : string = generateMonsterItem();
 
     let newMonster : Monster = {                                        // Monster wird erstellt.
@@ -87,7 +87,7 @@ function generateMonster()
         monsterExperience : newMonsterXP,
         monsterModifier : newMonsterModifier,
         monsterAttackPoints : newMonsterAp,
-        monsterImage : newImage,
+        monsterImage : newMonsterImage,
         monsterItem : newMonsterItem,
     };
 
@@ -137,10 +137,10 @@ function monsterGenerateHTML(count: number) {
     holdingDiv.appendChild(monsterMod);                                // Füge das <p> zum HTML-Dokument hinzu, indem es dem holding-Div angefügt wird.
 
     
-    let monsterImg : HTMLElement = document.createElement("img");       // Erstelle ein <img>-Element
-    monsterImg.setAttribute("src", Images[generatedImage()]);              // Der Pfad für das Bild muss über setAttribute festgelegt werden. Der Bildpfad kann natürlich auch anders aussehen.
-    monsterImg.setAttribute("alt", "Schreckliches Monster");            // Das alt für das Bild wird hier festgelegt.
-    holdingDiv.appendChild(monsterImg);  
+    let monsterIcon : HTMLElement = document.createElement("img");       // Erstelle ein <img>-Element
+    monsterIcon.setAttribute("src", monsterArray[count -1].monsterImage);              // Der Pfad für das Bild muss über setAttribute festgelegt werden. Der Bildpfad kann natürlich auch anders aussehen.
+    monsterIcon.setAttribute("alt", "Schreckliches Monster");            // Das alt für das Bild wird hier festgelegt.
+    holdingDiv.appendChild(monsterIcon);  
 
     let monsterItem: HTMLElement = document.createElement("p");
     monsterItem.innerHTML = "vorsicht! es/sie hat ein " + monsterArray[count - 1].monsterItem;
@@ -151,7 +151,7 @@ function monsterGenerateHTML(count: number) {
     monsterBtn.innerHTML = "Monster bekämpfen! ";                        // Verändere den Inhalt des HTML-Elementes. Der genaue Text ist dabei euch überlassen.
     holdingDiv.appendChild(monsterBtn);   
                                
-   let monsterCount : number = count;  
+   let monsterCount : number = count -1;  
 
     monsterBtn.addEventListener(                                        // Füge dem Monster eine Funktion hinzu.
         'click', function() {                                           // Wird bei Maus-Click ausgelöst.
@@ -200,10 +200,10 @@ function generateMonsterName() : string {
 }
 
 
-function generatedImage()                 //ein neuer versu h für die räudigen bilder
+function generateMonsterImage() :string          //ein neuer versu h für die räudigen bilder
 {
-    let tempImage : number = getRNGNumber(Images.length);
-    return tempImage;
+    let rngNumber : number = getRNGNumber(Images.length);
+    return Images[rngNumber];
 }
 
 // Wird für die Monster-Lebenspunkte aufgerufen.
@@ -252,11 +252,12 @@ function fightMonster(_index : number)
     console.log("Das Monster weigert sich zu verschwinden.");                       // Wird nächste Stunde erweitert.
     
     playerXP += monsterArray[_index - 1].monsterExperience;                 	    // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
-
+    monsterArray.splice(_index,1);
     updatePlayerLevel();
     updateHTML();
-    
 }
+
+
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
 function updatePlayerLevel()
 {
