@@ -10,7 +10,7 @@ let playerName = "Spieler"; // Ein paar globale Variablen, welche den Spieler da
 let playerXP = 0; // Stellt die gesammelte Erfahrung des Spielers dar.
 let playerXPperLevel = 500; // Da es nur einen Spieler gibt, ergibt sich noch nicht viel Sinn darin, für den Spieler ein interface (im Sinne der Programmierung) zu erstellen.
 // Mehrere Arrays, welche jeweils Bauteile für Namen oder Eigenschaften der Monster beinhalten.
-let prefix = ["Wald-", "Seuchen-", "Uralte(s) ", "Gift-", "Brennende(s) ", "Kniescheibenzertrümmernde(s)", "Cooles ", "littes ", "Mächtiges ", "Schwaches", "Suchendes"]; // length = 10
+let prefix = ["Wald-", "Seuchen-", "Uralte(s) ", "Gift-", "Brennende(s) ", "Kniescheibenzertrümmernde(s) ", "Cooles ", "littes ", "Mächtiges ", "Schwaches ", "Suchendes "]; // length = 10
 let monsterName = [" Wiesel", "Karl", "Ungeziefer", "Paul", "Troll", "Ork"]; // length = 5, da 6 Einträge. Von 0-5
 let suffix = [" des Verderbens", " aus der Hölle", " der Lethalität", " mit Rheuma", " der Redundanz", " der Zerberstung", " des Todes", " aus China", " aus der Hölle", " der Zerfickung", " der Hoffnungslosigkeit"]; // length = 10, da hier 11 Einträge sind. Von 0-10.
 let monsterModifers = ["Ist nervig", "Linkshänder", "Bier-Connoisseur", "Verfehlt häufig", "Prokrastiniert", "Müde", "Verwirrt", "Wasserscheu", "Bipolar", "Hat Schnupfen", "Verläuft sich oft"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster.
@@ -57,13 +57,13 @@ function generateMonster() {
             monsterItem: newMonsterItem,
         };
         monsterArray.push(newMonster); // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
-        console.log("Es erschein ein Monster mit " + monsterArray[monsterArray.length - 1].monsterExperience + "XP gespawnt");
+        console.log("Es erscheint ein Monster mit " + monsterArray[monsterArray.length - 1].monsterExperience + "XP gespawnt");
     }
     updateHTML(); //Unsere ominöse neue funktion
 }
 function updateHTML() {
-    clearMonsterCell();
-    monsterGenerateHTMLAll();
+    clearMonsterCell(); //Diese funktion löscht nachher alles für uns
+    monsterGenerateHTMLAll(); //Diese funktion stellt es wieder her allerding nachher ohne das monster das bekämpft wurde
     console.log("Soviele Monster gibt es " + getMonsterCount());
 }
 function clearMonsterCell() {
@@ -72,14 +72,14 @@ function clearMonsterCell() {
     while (monsterHoldingDiv.firstChild) {
         monsterHoldingDiv.removeChild(monsterHoldingDiv.firstChild);
     }
-    console.log("alles geleert");
+    console.log("LEER!");
 }
 function monsterGenerateHTMLAll() {
     for (let i = 1; i <= monsterArray.length; i++) {
         monsterGenerateHTML(i);
-        console.log("bis jetzt generiert" + i);
+        console.log("schon fertig" + i);
     }
-    console.log("ich habe alle generiert!");
+    console.log("jetzt bin ich ganz fertig!");
 }
 function monsterGenerateHTML(count) {
     let holdingDiv = document.createElement("div"); // Erstelle ein neues HTML-Element vom typ <div>. Es ist jedoch noch nicht zu sehen!
@@ -172,7 +172,7 @@ function generateMonsterItem() {
 function fightMonster(_index) {
     console.log("Spieler kämpft gegen Monster und gewinnt!"); // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     console.log("Das Monster weigert sich zu verschwinden."); // Wird nächste Stunde erweitert.
-    playerXP += monsterArray[_index - 1].monsterExperience; // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
+    playerXP += monsterArray[_index].monsterExperience; // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
     monsterArray.splice(_index, 1);
     updatePlayerLevel();
     updateHTML();
