@@ -271,7 +271,7 @@ function getMonsterCount(): number {
     return monsterArray.length;
 }
 
-function pusher() {
+function pusher() {            //Hier mal ein anderer Pusher
     PushArray.push(Math.random());
     console.log(PushArray);
 }
