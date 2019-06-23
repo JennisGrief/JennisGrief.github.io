@@ -20,7 +20,7 @@ window.onload = function () {
     updatePlayerLevel(0); // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
     console.log("" + document.getElementById("monsterSpawner").innerHTML); //MONSTERSPAWNER BUTTONINHALT KANN NICHT AUSGEGEBEN WERDEN WENN DAS ELEMENT NOCH NICHT ERSTELLT WURDE\\\\\\\\\\\\\\\\\\\\\\\\\\\\
     // document.getElementById("Arraypusher").addEventListener("click", pusher)
-    //    document.getElementById("weakestMonsterFightButton").addEventListener("click", fightWeakestMonster, false);
+    document.getElementById("weakestMonsterFightButton").addEventListener("click", fightWeakestMonster, false);
     document.getElementById("allWeakMonsterFightButton").addEventListener("click", fightAllWeakMonsters, false);
     document.getElementById("allMonsterFightButton").addEventListener("click", fightAllMonsters, false);
 };
@@ -175,6 +175,16 @@ function fightAllMonsters() {
         }
     }
 }
+function fightWeakestMonster() {
+    let indexWeakest = 0;
+    for (let i = 1; i < monsterArray.length; i++) {
+        if (monsterArray[i].monsterLevel < monsterArray[indexWeakest].monsterLevel) {
+            indexWeakest = i;
+        }
+    }
+    console.log("Weakest monster: " + indexWeakest);
+    fightMonster(indexWeakest);
+}
 function fightAllWeakMonsters() {
     let thisLevel = playerLevel;
     for (let i = 0; i < monsterArray.length; i++) {
@@ -190,7 +200,7 @@ function fightAllWeakMonsters() {
 }
 function fightMonster(_index) {
     console.log(monsterArray);
-    if (playerLevel > monsterArray[_index].monsterLevel) {
+    if (playerLevel >= monsterArray[_index].monsterLevel) {
         if (monsterArray[_index].monsterHealthPoints == 1) {
             console.log("Bruder du hast es geschafft!");
             updatePlayerLevel(monsterArray[_index].monsterExperience);

@@ -270,7 +270,7 @@ function fightMonster(_index : number)
 {
 console.log (monsterArray);
 
-if (playerLevel> monsterArray[_index].monsterLevel) { 
+if (playerLevel >= monsterArray[_index].monsterLevel) { 
     if (monsterArray[_index].monsterHealthPoints == 1){  
         console.log("Bruder du hast es geschafft!");
         updatePlayerLevel(monsterArray[_index].monsterExperience);
