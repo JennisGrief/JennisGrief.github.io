@@ -101,7 +101,7 @@ function clearMonsterCell() {
 }
 
 function monsterGenerateHTMLAll() {
-    for (let i: number = 1; i < monsterArray.length; i++) {
+    for (let i: number = 1; i <= monsterArray.length; i++) {
         monsterGenerateHTML(i);
         console.log("schon fertig" + i);
     }

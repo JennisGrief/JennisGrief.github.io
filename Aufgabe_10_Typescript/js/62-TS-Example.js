@@ -73,7 +73,7 @@ function clearMonsterCell() {
     console.log("LEER!");
 }
 function monsterGenerateHTMLAll() {
-    for (let i = 1; i < monsterArray.length; i++) {
+    for (let i = 1; i <= monsterArray.length; i++) {
         monsterGenerateHTML(i);
         console.log("schon fertig" + i);
     }
