@@ -174,7 +174,7 @@ function generateMonsterItem() {
 function fightAllMonsters() {
     for (let i = 0; i < monsterArray.length; i++) {
         let prevPlayerXP = 0;
-        fightMonster(i);
+        fightMonster(i); //Die normal  
         if (playerXP > prevPlayerXP) { // wenn die xp nun größer sind als die vrherigen hat der spieler gewonnen nd das nöchste monster wird abgefragt  
             i = i - 1;
         }
@@ -187,14 +187,14 @@ function fightWeakestMonster() {
             indexWeakest = i;
         }
     }
-    console.log("Weakest monster: " + indexWeakest);
+    console.log("Leichtestes Opfer: " + indexWeakest);
     fightMonster(indexWeakest);
 }
 function fightAllWeakMonsters() {
-    let startingLevel = playerLevel;
+    let untergrenze = playerLevel; //Hier werden alle Monster die unter dem Leveldes Spielers liegen rausgeucht und gesmashed 
     for (let i = 0; i < monsterArray.length; i++) {
         let prevPlayerXP = 0;
-        if (startingLevel > monsterArray[i].monsterLevel) {
+        if (untergrenze > monsterArray[i].monsterLevel) {
             fightMonster(i);
             i = i - 1;
         }
@@ -233,9 +233,9 @@ function updatePlayerLevel(XPchange) {
         playerLevel = Math.floor(playerXP / playerXPperLevel) + 1;
     }
     let extendedXP = playerXPperLevel * playerLevel;
-    document.getElementById("xpCounter").innerHTML = "Player-Level: " + playerLevel + " (XP: " + playerXP + " / " + extendedXP + ")"; // Baue den String für die Spieler-Info zusammen
+    document.getElementById("xpCounter").innerHTML = "Spieler-Level " + playerLevel + " (XP: " + playerXP + " / " + extendedXP + ")"; // Baue den String für die Spieler-Info zusammen
     console.log("Spieler " + " hat nun Level " + playerLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)"); // Spieler-Level in der Konsole.
-    if (playerLevel == 20 && playerLevel > oldPlayerLevel) {
+    if (playerLevel == 20 && playerLevel > oldPlayerLevel) { //Puh dieses Level 20 dauert schon
         alert("Level 20? Hätte nicht gedacht das du es so weit schaffst!!!1!11! Viel spaß im Lategame!");
     }
 }

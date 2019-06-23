@@ -22,7 +22,7 @@ let monsterName : string[] = [" Wiesel", "Karl", "Ungeziefer","Paul","Troll","Or
 let suffix : string[] = [" des Verderbens", " aus der Hölle", " der Lethalität", " mit Rheuma", " der Redundanz", " der Zerberstung", " des Todes" ," aus China" ," aus der Hölle"," der Zerfickung"," der Hoffnungslosigkeit"]; // length = 10, da hier 11 Einträge sind. Von 0-10.
 let monsterModifers : string[] = ["Ist nervig", "Linkshänder", "Bier-Connoisseur", "Verfehlt häufig", "Prokrastiniert", "Müde", "Verwirrt", "Wasserscheu", "Bipolar", "Hat Schnupfen", "Verläuft sich oft"]; // Eine Reihe von zufälligen "Verstärkern" für das Monster.
 let Images : string[] = ["imgs/loewe.png","imgs/elefant.png","imgs/frankenstein.png","imgs/female.png","imgs/boss.png","imgs/fluschel.png","imgs/dasAuge.png","imgs/braun.png","imgs/bigMouth.png","imgs/zunge.png","imgs/gargoyle.png","imgs/auge.png","imgs/giant.png","imgs/baum.png","imgs/drache.png","imgs/werewolf.png"];
-let monsterItem : string[] = [" Wurst "," Dorsch "," Attest ", " Stachelschwert ", " mittelschwere Depression", "Sexuell übertragbare Krankheit", "guten Sinn für Humor", "Meme Page auf Intagram"];
+let monsterItem : string[] = [" Wurst "," Dorsch "," Attest ", " Stachelschwert ", " mittelschwere Depression", "Sexuell übertragbare Krankheit", "guten Sinn für Humor", "Meme Page auf Intagram"  ];
 
 //let PushArray: number[] = [];
 
@@ -241,29 +241,29 @@ function generateMonsterItem(): string {
 function fightAllMonsters(){                          //Erste neue Funktion lässt den Spieler gegen ein Monster kämpfen und regelt über den Xp change ob es klappt und weitergeht
     for (let i = 0; i < monsterArray.length; i++){
         let prevPlayerXP : number = 0;
-        fightMonster(i);
+        fightMonster(i);              //Die normal  
         if (playerXP > prevPlayerXP){ // wenn die xp nun größer sind als die vrherigen hat der spieler gewonnen nd das nöchste monster wird abgefragt  
             i = i-1;
         }
     }
 }
 
-function fightWeakestMonster(){     // Erstellt einen index und verleicht dieen dann mit den anderen mosntern um das schächste zu bekämpfen
+function fightWeakestMonster(){     // Erstellt einen index und vergleicht diesen dann mit den anderen monstern um das schwächste zu bekämpfen
     let indexWeakest : number = 0;
     for (let i = 1; i < monsterArray.length; i++){
         if (monsterArray[i].monsterLevel < monsterArray[indexWeakest].monsterLevel){
             indexWeakest = i;
         }
     }
-    console.log("Weakest monster: " + indexWeakest)
+    console.log("Leichtestes Opfer: " + indexWeakest)
     fightMonster(indexWeakest);
 }
 
-function fightAllWeakMonsters(){
-    let startingLevel : number = playerLevel;
+function fightAllWeakMonsters(){       //Perfekter Button um das Spiel schnell zu gewinnen undso 
+    let untergrenze : number = playerLevel; //Hier werden alle Monster die unter dem Leveldes Spielers liegen rausgeucht und gesmashed 
     for (let i = 0; i < monsterArray.length; i++){
         let prevPlayerXP : number = 0;
-        if (startingLevel > monsterArray[i].monsterLevel){
+        if (untergrenze > monsterArray[i].monsterLevel){
             fightMonster(i); 
             i = i-1;
         }
@@ -302,19 +302,19 @@ if (playerLevel >= monsterArray[index].monsterLevel){  //Hab das mal ein wneig b
  
 
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
-function updatePlayerLevel (XPchange : number)
+function updatePlayerLevel (XPchange : number)    //Sooo dann hier auch mal diese Funktion überarbeitet 
 {
   let oldPlayerLevel : number = playerLevel;
     playerXP += XPchange; 
-    
+
     if (Math.floor)(playerXP / playerXPperLevel) +1 >= 1;{
        playerLevel = Math.floor(playerXP / playerXPperLevel) +1;
     }
     let extendedXP : number = playerXPperLevel * playerLevel;
-    document.getElementById("xpCounter").innerHTML = "Player-Level: " + playerLevel + " (XP: " + playerXP + " / " + extendedXP + ")";       // Baue den String für die Spieler-Info zusammen
+    document.getElementById("xpCounter").innerHTML = "Spieler-Level " + playerLevel + " (XP: " + playerXP + " / " + extendedXP + ")";       // Baue den String für die Spieler-Info zusammen
     console.log("Spieler " + " hat nun Level " + playerLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)");        // Spieler-Level in der Konsole.
 
-    if (playerLevel == 20 && playerLevel > oldPlayerLevel){
+    if (playerLevel == 20 && playerLevel > oldPlayerLevel){    //Puh dieses Level 20 dauert schon
         alert("Level 20? Hätte nicht gedacht das du es so weit schaffst!!!1!11! Viel spaß im Lategame!");
     }
 }    
