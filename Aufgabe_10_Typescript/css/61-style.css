@@ -37,6 +37,12 @@ h1 {
 	margin: auto;
 }
 
+.monster span {
+	padding-left : 0.5em;
+	padding-right: 0.5em;
+	margin : 0.1em;
+	background-color: #e00a0a;
+}
 .monster p+p
 {
   font-size: 0.7em;
