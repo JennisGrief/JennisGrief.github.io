@@ -52,9 +52,9 @@ function generateMonster()
     let tempRandom: number = getRNGNumber(3) + 1;      // Wieviele neue Monster erzeugt werden (Zufallszahl von 1-3)
 
     if (tempRandom == 1) {
-        console.log("Bruder muss los.Monsteralarm.");
+        console.log("Bruder muss los.Monsteralarm.");    // Ist einfach gut zu wissen
     } else {
-        console.log("Bruder schau her es sind " + tempRandom + " neue Monster gespawnt!");
+        console.log("Bruder schau her es sind " + tempRandom + " neue Monster gespawnt!");  //Ohoh jezt wirds wild 
     }
 
     for (let i: number = 0; i < tempRandom; i++) {
@@ -83,10 +83,11 @@ function generateMonster()
 updateHTML();  //Unsere ominöse neue funktion
 }
 
-function updateHTML() {            //Diese funktion löst die anderen aus 
+function updateHTML() {             //Diese funktion löst die anderen aus 
+             
     clearMonsterCell();            //Diese funktion löscht nachher alles für uns
     monsterGenerateHTMLAll();      //Diese funktion stellt es wieder her allerding nachher ohne das monster das bekämpft wurde
-     getMonsterCount();
+     getMonsterCount();            // na wie viele sinds denn?
    
 }
 function clearMonsterCell() {
@@ -133,6 +134,8 @@ function monsterGenerateHTML(count: number)
     monsterIcon.setAttribute("alt", "Schreckliches Monster");            // Das alt für das Bild wird hier festgelegt.
     holdingDiv.appendChild(monsterIcon);  
 
+
+    
     let monsterItem: HTMLElement = document.createElement("p");
     monsterItem.innerHTML = "vorsicht! er/sie/es hat ein(e)(n) " + monsterArray[count - 1].monsterItem;
     holdingDiv.appendChild(monsterItem);
@@ -207,7 +210,7 @@ function generateMonsterImage() :string          //ein neuer versu h für die r�
 function generateMonsterHealthPoints() : number
 {
     // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 10) + 1 zurück.
-    let tempMonsterHP : number = 1 + getRNGNumber(6);
+    let tempMonsterHP : number = 2 + getRNGNumber(6);
     return tempMonsterHP;
 }
 
@@ -257,10 +260,10 @@ function fightWeakestMonster(){     // Erstellt einen index und verleicht dieen 
 }
 
 function fightAllWeakMonsters(){
-    let thisLevel : number = playerLevel;
+    let startingLevel : number = playerLevel;
     for (let i = 0; i < monsterArray.length; i++){
         let prevPlayerXP : number = 0;
-        if (thisLevel > monsterArray[i].monsterLevel){
+        if (startingLevel > monsterArray[i].monsterLevel){
             fightMonster(i); 
             i = i-1;
         }
@@ -274,7 +277,7 @@ function fightAllWeakMonsters(){
 
 function fightMonster(index : number)
 {
-console.log (monsterArray);
+console.log (monsterArray);      //unsere altbekannte fight funktion jetzt allerdengs plus bedingnungen oder so
 
 if (playerLevel >= monsterArray[index].monsterLevel){  //Hab das mal ein wneig beschleunigt
     if (monsterArray[index].monsterHealthPoints == 1){  
@@ -284,15 +287,15 @@ if (playerLevel >= monsterArray[index].monsterLevel){  //Hab das mal ein wneig b
         updateHTML();
     }
     else {
-        console.log("Guter Hit Bro das  Monster verliert einen Punkt");
-        monsterArray[index-0].monsterHealthPoints -= 1;
+        console.log("Guter Hit Bro, das  Monster verliert einen LebensPunkt");
+        monsterArray[index].monsterHealthPoints -= 1;
         updateHTML(); 
     }
      }
 
      else if(playerLevel < monsterArray[index].monsterLevel){
-        console.log("Das Monster weigert sich zu verschwinden.");
-        updatePlayerLevel( - monsterArray[index].monsterExperience);
+       alert("Nimm die Beine in die Hand Brudi das gewinnst du niemals");
+        updatePlayerLevel( -100);    //Habe die "Strafe" jetzt mal abgeschwächt sonst ist das einfach nur stressig!
     }
 
     }
