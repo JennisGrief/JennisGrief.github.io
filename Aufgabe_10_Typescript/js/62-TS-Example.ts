@@ -2,12 +2,12 @@
 
 interface Monster {
     monsterName : string; // Name des Monsters
-    monsterHealthPoints : number; // Lebenspunkte
     monsterExperience : number; // Erfahrungspunkte bei besiegen des Monsters
     monsterModifier : string []; // Monster-Verstärker. Diese sind in diesem Fall nur Text! (Da hier einfacher Zufall für die Auswahl genutzt wird, kann der gleiche Eintrag auch doppelt vorkommen)
     monsterImage : string;  // Btrachtet diese wundervollen Bilder!!!! Danke Flaticon!
     monsterItem : string;  // Monster Item, viel mehr  als dorsch braucht es da allerdings nicht!
     monsterLevel : number; //soooo hier die ominöse Monster Level Variable 
+    monsterHealthPoints : number; // Lebenspunkte
 }
 let monsterHolder : string = "monsterHoldingCell";                                  // ID für das Haupt-Element, in welchem die Monster sich befinden werden. Wird vielleicht mehrfach in dem Skript gebraucht, deshalb einmalig definitiert.
 
@@ -33,10 +33,9 @@ console.log(monsterArray ); // Gebe das Monster-Array einmal zu beginn aus. Es s
 window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonster, false);
     updatePlayerLevel(0);                                                                                    // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
-    console.log("" + document.getElementById("monsterSpawner").innerHTML);                                 //MONSTERSPAWNER BUTTONINHALT KANN NICHT AUSGEGEBEN WERDEN WENN DAS ELEMENT NOCH NICHT ERSTELLT WURDE\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-   // document.getElementById("Arraypusher").addEventListener("click", pusher)
+    console.log("" + document.getElementById("monsterSpawner").innerHTML);                                
 
-   document.getElementById("weakestMonsterFightButton").addEventListener("click", fightWeakestMonster, false);
+  document.getElementById("weakestMonsterFightButton").addEventListener("click", fightWeakestMonster, false);
   document.getElementById("allWeakMonsterFightButton").addEventListener("click", fightAllWeakMonsters, false);
   document.getElementById("allMonsterFightButton").addEventListener("click", fightAllMonsters, false);
 }
@@ -57,21 +56,21 @@ function generateMonster()
     for (let i: number = 0; i < tempRandom; i++) {
 
     let newMonsterName : string = generateMonsterName();                // Eigens-gebaute Funktion, welche einen string zurück gibt.
-    let newMonsterHP : number = generateMonsterHitPoints();             // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
     let newMonsterXP : number = generateMonsterXP();                    // Eigens-gebaute Funktion, welche eine Zahl zurück gibt.
     let newMonsterModifier : string[] = generateMonsterModifer();       // Eigens-gebaute Funktion, welche ein string-Array zurück gibt.
     let newMonsterImage : string = generateMonsterImage();     // Bilder Bilder Bilder 
     let newMonsterItem : string = generateMonsterItem();       // Gebt diesem Monster einen Schild!
     let newMonsterLevel : number = getRNGNumber(11);     // Eigens gebaute Funktion für dieses shitty level 
+    let newMonsterHP : number = generateMonsterHealthPoints();
 
     let newMonster : Monster = {                                        // Monster wird erstellt.
         monsterName : newMonsterName, 
-        monsterHealthPoints : newMonsterHP,
         monsterExperience : newMonsterXP,
         monsterModifier : newMonsterModifier,
         monsterImage : newMonsterImage,
         monsterItem : newMonsterItem,
         monsterLevel : newMonsterLevel,
+        monsterHealthPoints : newMonsterHP,
     };
 
     monsterArray.push(newMonster);                                      // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
@@ -97,14 +96,14 @@ function clearMonsterCell() {
 }
 
 function monsterGenerateHTMLAll() {
-    for (let i: number = 1; i <= monsterArray.length; i++) {
+    for (let i: number = 1; i < monsterArray.length; i++) {
         monsterGenerateHTML(i);
         console.log("schon fertig" + i);
     }
     console.log("jetzt bin ich ganz fertig!");
 }
 
-function getMonsterCount() : number
+function getMonsterCount() : number       ///Was haben wir denn da?
 {
     let monsterCount : number = monsterArray.length;
     return monsterCount;
@@ -138,31 +137,32 @@ function monsterGenerateHTML(count: number)
     monsterBtn.innerHTML = "Monster bekämpfen! ";                        // Verändere den Inhalt des HTML-Elementes. Der genaue Text ist dabei euch überlassen.
     holdingDiv.appendChild(monsterBtn);   
                                
-   let monsterCount : number = count -1 ;  
+   //let monsterCount : number = count -1  ; //ACHTUNG ACHTUNG HIER STAND MAL -1 
 
     monsterBtn.addEventListener(                                        // Füge dem Monster eine Funktion hinzu.
         'click', function() {                                           // Wird bei Maus-Click ausgelöst.
-            fightMonster(monsterCount);                                 // Wenn das Monster erstellt wird erhält die Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.
+            fightMonster(count-1);                                 // Wenn das Monster erstellt wird erhält die Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.
         }, false);    
-                                                         
+                                    
+      //Ier beginnt die genrierng von html  
+
    let monsterLevel : HTMLElement = document.createElement("p");    //Hier erstellen wir ein Html Element für das Level so dass sder Spieler es auch sehen kann 
       monsterLevel.innerHTML = "Level: " + monsterArray[count-1].monsterLevel   //Hier war mal ein -1
       holdingDiv.appendChild(monsterLevel);
     
 
 
-   let monsterHealthPoints : HTMLElement = document.createElement("p");     
-      monsterHealthPoints.innerHTML = "Lebenspunkte: " ;
+   let monsterHealth : HTMLElement = document.createElement("p");     
+      monsterHealth.innerHTML = "Lebenspunkte: " ;
       
       for (let i = 1; i <= monsterArray[count].monsterHealthPoints; i++){
-        let healthPoints : HTMLElement = document.createElement("span");
-        monsterHealthPoints.appendChild(healthPoints);
+        let HP : HTMLElement = document.createElement("span");
+        monsterHealth.appendChild(HP);
     }
-    holdingDiv.appendChild(monsterHealthPoints);
+    holdingDiv.appendChild(monsterHealth);
     }
 
-    
-
+    //nun füllen wir das html 
 
 function getRNGNumber(_maxNumber : number) : number
 {
@@ -200,16 +200,16 @@ function generateMonsterImage() :string          //ein neuer versu h für die r�
 
 // Wird für die Monster-Lebenspunkte aufgerufen.
 // Liefert eine variierende Zahl zurück.
-function generateMonsterHitPoints() : number
+function generateMonsterHealthPoints() : number
 {
     // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 10) + 1 zurück.
-    let tempMonsterHP : number = 1 + getRNGNumber(5);
+    let tempMonsterHP : number = 1 + getRNGNumber(6);
     return tempMonsterHP;
 }
 
 function generateMonsterXP() : number
 {
-    let tempMonsterXP : number = 100 + getRNGNumber(420);  // Diese Funktion gibt eine zufällige ganze Zahl (zwischen 0 und 350) + 100 zurück.
+    let tempMonsterXP : number = 200 + getRNGNumber(420);  //Naja ich hab das mal ein wenig erhöht
     return tempMonsterXP;
 }
 
@@ -229,7 +229,9 @@ function generateMonsterItem(): string {
     return tempMonsterItem;
 }
 
-function fightAllMonsters(){
+//Fighting Zone!!
+
+function fightAllMonsters(){                          //Erste neue Funktion lässt den Spieler gegen ein Monster kämpfen und regelt über den Xp change ob es klappt und weitergeht
     for (let i = 0; i < monsterArray.length; i++){
         let prevPlayerXP : number = 0;
         fightMonster(i);
@@ -239,7 +241,7 @@ function fightAllMonsters(){
     }
 }
 
-function fightWeakestMonster(){
+function fightWeakestMonster(){     // Erstellt einen index und verleicht dieen dann mit den anderen mosntern um das schächste zu bekämpfen
     let indexWeakest : number = 0;
     for (let i = 1; i < monsterArray.length; i++){
         if (monsterArray[i].monsterLevel < monsterArray[indexWeakest].monsterLevel){
@@ -270,24 +272,22 @@ function fightMonster(_index : number)
 {
 console.log (monsterArray);
 
-if (playerLevel >= monsterArray[_index].monsterLevel) { 
+if (playerLevel >= monsterArray[_index].monsterLevel){  //Hab das mal ein wneig beschleunigt
     if (monsterArray[_index].monsterHealthPoints == 1){  
         console.log("Bruder du hast es geschafft!");
         updatePlayerLevel(monsterArray[_index].monsterExperience);
-        monsterArray.splice(_index, 1);
+        monsterArray.splice(_index,1);
         updateHTML();
     }
     else {
         console.log("Guter Hit Bro das  Monster verliert einen Punkt");
-        monsterArray[_index +1].monsterHealthPoints -= 1;
-        updateHTML();
+        monsterArray[_index].monsterHealthPoints -= 1;
+        updateHTML(); 
     }
     
- // else if(playerLevel < monsterArray[_index].monsterLevel){
- //   console.log("Bruder du bist zu schwach geh ein bisschen exp farmen");
-  //updatePlayerLevel( - monsterArray[_index].monsterExperience);
-    }
+   }
  }
+ 
 
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
 function updatePlayerLevel (XPchange : number)
@@ -299,7 +299,7 @@ function updatePlayerLevel (XPchange : number)
     }
     let extendedXP : number = playerXPperLevel * playerLevel;
     document.getElementById("xpCounter").innerHTML = "Player-Level: " + playerLevel + " (XP: " + playerXP + " / " + extendedXP + ")";       // Baue den String für die Spieler-Info zusammen
-    console.log("Spieler " + playerName + " hat nun Level " + playerLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)");        // Spieler-Level in der Konsole.
+    console.log("Spieler " + " hat nun Level " + playerLevel + " mit " + playerXP + " (" + playerXPperLevel + " pro Level)");        // Spieler-Level in der Konsole.
 
     if (playerLevel == 20 && playerLevel > oldPlayerLevel){
         alert("Level 20? Hätte nicht gedacht das du es so weit schaffst!!!1!11! Viel spaß im Lategame!");
