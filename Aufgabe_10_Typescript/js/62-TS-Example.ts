@@ -32,6 +32,10 @@ console.log(monsterArray ); // Gebe das Monster-Array einmal zu beginn aus. Es s
 // Generelle onload-funktion um Event-Listener zum Dokument hinzuzufügen
 window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonster, false);
+    document.getElementById("weakestMonsterFightButton").addEventListener("click", fightWeakestMonster, false);
+    document.getElementById("allWeakMonsterFightButton").addEventListener("click", fightAllWeakMonsters, false);
+    document.getElementById("allMonsterFightButton").addEventListener("click", fightAllMonsters, false);
+   
     updatePlayerLevel(0);                                                                                    // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
     console.log("" + document.getElementById("monsterSpawner").innerHTML);                                
 
@@ -141,7 +145,7 @@ function monsterGenerateHTML(count: number)
 
     monsterBtn.addEventListener(                                        // Füge dem Monster eine Funktion hinzu.
         'click', function() {                                           // Wird bei Maus-Click ausgelöst.
-            fightMonster(count-1);                                 // Wenn das Monster erstellt wird erhält die Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.
+            fightMonster(count);                                 // Wenn das Monster erstellt wird erhält die Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.
         }, false);    
                                     
       //Ier beginnt die genrierng von html  
@@ -268,20 +272,20 @@ function fightAllWeakMonsters(){
     }
 }
 
-function fightMonster(_index : number)
+function fightMonster(index : number)
 {
 console.log (monsterArray);
 
-if (playerLevel >= monsterArray[_index].monsterLevel){  //Hab das mal ein wneig beschleunigt
-    if (monsterArray[_index].monsterHealthPoints == 1){  
+if (playerLevel >= monsterArray[index].monsterLevel){  //Hab das mal ein wneig beschleunigt
+    if (monsterArray[index].monsterHealthPoints == 1){  
         console.log("Bruder du hast es geschafft!");
-        updatePlayerLevel(monsterArray[_index].monsterExperience);
-        monsterArray.splice(_index,1);
+        updatePlayerLevel(monsterArray[index].monsterExperience);
+        monsterArray.splice(index,1);
         updateHTML();
     }
     else {
         console.log("Guter Hit Bro das  Monster verliert einen Punkt");
-        monsterArray[_index].monsterHealthPoints -= 1;
+        monsterArray[index].monsterHealthPoints -= 1;
         updateHTML(); 
     }
     
