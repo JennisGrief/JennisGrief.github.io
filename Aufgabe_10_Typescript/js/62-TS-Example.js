@@ -208,8 +208,8 @@ function fightMonster(_index) {
             updateHTML();
         }
         else {
-            console.log("Monster verliert einen Lebenspunkt!");
-            monsterArray[_index].monsterHealthPoints -= 1;
+            console.log("Guter Hit Bro das  Monster verliert einen Punkt");
+            monsterArray[_index + 1].monsterHealthPoints -= 1;
             updateHTML();
         }
         // else if(playerLevel < monsterArray[_index].monsterLevel){
