@@ -219,7 +219,7 @@ function fightMonster(index) {
         }
     }
     else if (playerLevel < monsterArray[index].monsterLevel) {
-        alert("Nimm die Beine in die Hand Brudi das gewinnst du niemals");
+        alert("Nimm die Beine in die Hand Brudi das gewinnst du niemals!");
         updatePlayerLevel(-100); //Habe die "Strafe" jetzt mal abgeschwächt sonst ist das einfach nur stressig!
     }
 }

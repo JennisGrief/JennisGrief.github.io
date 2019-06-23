@@ -294,7 +294,7 @@ if (playerLevel >= monsterArray[index].monsterLevel){  //Hab das mal ein wneig b
      }
 
      else if(playerLevel < monsterArray[index].monsterLevel){
-       alert("Nimm die Beine in die Hand Brudi das gewinnst du niemals");
+       alert("Nimm die Beine in die Hand Brudi das gewinnst du niemals!");
         updatePlayerLevel( -100);    //Habe die "Strafe" jetzt mal abgeschwächt sonst ist das einfach nur stressig!
     }
 
@@ -306,6 +306,7 @@ function updatePlayerLevel (XPchange : number)
 {
   let oldPlayerLevel : number = playerLevel;
     playerXP += XPchange; 
+    
     if (Math.floor)(playerXP / playerXPperLevel) +1 >= 1;{
        playerLevel = Math.floor(playerXP / playerXPperLevel) +1;
     }
