@@ -107,7 +107,7 @@ function monsterGenerateHTML(count) {
     //let monsterCount : number = count -1  ; //ACHTUNG ACHTUNG HIER STAND MAL -1 
     monsterBtn.addEventListener(// Füge dem Monster eine Funktion hinzu.
     'click', function () {
-        fightMonster(count); // Wenn das Monster erstellt wird erhält die Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.
+        fightMonster(count - 1); // Wenn das Monster erstellt wird erhält die Funktion einen Parameter, welcher der aktuellen Anzahl entspricht.
     }, false);
     //Ier beginnt die genrierng von html  
     let monsterLevel = document.createElement("p"); //Hier erstellen wir ein Html Element für das Level so dass sder Spieler es auch sehen kann 
@@ -214,9 +214,13 @@ function fightMonster(index) {
         }
         else {
             console.log("Guter Hit Bro das  Monster verliert einen Punkt");
-            monsterArray[index].monsterHealthPoints -= 1;
+            monsterArray[index - 0].monsterHealthPoints -= 1;
             updateHTML();
         }
+    }
+    else if (playerLevel < monsterArray[index].monsterLevel) {
+        console.log("Das Monster weigert sich zu verschwinden.");
+        updatePlayerLevel(-monsterArray[index].monsterExperience);
     }
 }
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
