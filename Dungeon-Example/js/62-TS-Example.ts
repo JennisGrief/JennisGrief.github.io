@@ -57,6 +57,7 @@ console.log(monsterArray ); // Gebe das Monster-Array einmal zu beginn aus. Es s
 window.onload = function () {
     document.getElementById("monsterSpawner").addEventListener("click", generateMonster, false);
     updatePlayerLevel(); // Zu Anfang wird durch eine Funktion ein HTML-Element mit Inhalt befüllt.
+    console.log("" + document.getElementById("monsterSpawner").innerHTML);
 }
 
 
@@ -84,7 +85,8 @@ function generateMonster()
         monsterAttackPoints : newMonsterAp,
     };
 
-    monsterArray.push(newMonster);                                      // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
+    monsterArray.push(newMonster);                                     // Monster wird erst in diesem Schritt zu dem Array hinzugefügt 
+    console.log(monsterArray[0].monsterExperience)
     monsterGenerateHTML();                                              // Triggere die Generierung von HTML
 }
 
@@ -199,13 +201,21 @@ function fightMonster(_index : number)
     console.log("Spieler kämpft gegen Monster und gewinnt!");                       // Ohne Logik mit if/else ist so etwas wie ein Kampf nicht leicht umzusetzen.
     console.log("Das Monster weigert sich zu verschwinden.");                       // Wird nächste Stunde erweitert.
     
-    playerXP += monsterArray[_index ].monsterExperience;                 	    // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
-    monsterArray.splice(_index,1);
-                	  
+    playerXP += monsterArray[_index - 1].monsterExperience;                 	    // _index ist in diesem Fall die Länge des Arrays - allerdings zählt der Computer beginnend von null, nicht eins! Deshalb _index-1.
+
     updatePlayerLevel();
-    
+    defeatMonster(_index);
 }
 
+function defeatMonster(_index : number)
+{
+
+    let defeatedMonster : string = monsterArray[_index -1].monsterName;
+    monsterArray = [];
+    console.log(monsterArray);
+    document.getElementById(monsterHolder).innerHTML = "";
+   console.log("Du hast " + defeatedMonster + " besiegt und alle sind plötzlich abgehauen ");
+}
 
 // Aufgerufen, um das HTML-Element, welches das Spieler-Level darstellt, zu erneuern.
 function updatePlayerLevel()
