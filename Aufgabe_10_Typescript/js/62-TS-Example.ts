@@ -36,7 +36,7 @@ window.onload = function () {
     console.log("" + document.getElementById("monsterSpawner").innerHTML);                                 //MONSTERSPAWNER BUTTONINHALT KANN NICHT AUSGEGEBEN WERDEN WENN DAS ELEMENT NOCH NICHT ERSTELLT WURDE\\\\\\\\\\\\\\\\\\\\\\\\\\\\
    // document.getElementById("Arraypusher").addEventListener("click", pusher)
 
-//    document.getElementById("weakestMonsterFightButton").addEventListener("click", fightWeakestMonster, false);
+   document.getElementById("weakestMonsterFightButton").addEventListener("click", fightWeakestMonster, false);
   document.getElementById("allWeakMonsterFightButton").addEventListener("click", fightAllWeakMonsters, false);
   document.getElementById("allMonsterFightButton").addEventListener("click", fightAllMonsters, false);
 }
@@ -237,6 +237,17 @@ function fightAllMonsters(){
             i = i-1;
         }
     }
+}
+
+function fightWeakestMonster(){
+    let indexWeakest : number = 0;
+    for (let i = 1; i < monsterArray.length; i++){
+        if (monsterArray[i].monsterLevel < monsterArray[indexWeakest].monsterLevel){
+            indexWeakest = i;
+        }
+    }
+    console.log("Weakest monster: " + indexWeakest)
+    fightMonster(indexWeakest);
 }
 
 function fightAllWeakMonsters(){
