@@ -115,7 +115,7 @@ function monsterGenerateHTML(count) {
     holdingDiv.appendChild(monsterLevel);
     let monsterHealth = document.createElement("p");
     monsterHealth.innerHTML = "Lebenspunkte: ";
-    for (let i = 1; i <= monsterArray[count].monsterHealthPoints; i++) {
+    for (let i = 1; i <= monsterArray[count - 1].monsterHealthPoints; i++) {
         let HP = document.createElement("span");
         monsterHealth.appendChild(HP);
     }
