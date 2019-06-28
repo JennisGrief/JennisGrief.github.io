@@ -121,6 +121,7 @@ function monsterGenerateHTML(count) {
     }
     holdingDiv.appendChild(monsterHealth);
 }
+/////
 //nun füllen wir das html 
 function getRNGNumber(_maxNumber) {
     return Math.floor(Math.random() * _maxNumber); //so das müsste das gleiche machen nur ein wenig kleiner 

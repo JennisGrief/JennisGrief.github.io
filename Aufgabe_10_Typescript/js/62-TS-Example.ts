@@ -168,7 +168,7 @@ function monsterGenerateHTML(count: number)
     }
     holdingDiv.appendChild(monsterHealth);
     }
-
+/////
     //nun füllen wir das html 
 
 function getRNGNumber(_maxNumber : number) : number
