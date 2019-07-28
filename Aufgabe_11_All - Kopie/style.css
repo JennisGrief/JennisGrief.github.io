@@ -1,0 +1,128 @@
+header {
+    background-color: rgba(114, 113, 113, 0.301);
+    width: 100%;
+    height: 79px;
+    color: black;
+    font-size: 30px
+}
+main{
+    background-color:lightblue;
+    background-image: url("tisch.jpg");
+width: 100%;
+height:100%;
+}
+
+footer{
+    font-size: 2em;
+    margin-top: 75%;
+    background-color: grey;
+    width: 100%;
+    color: grey;
+    text-align: right;
+}
+
+.card.turned{
+    background-image: url("uno.jpg");
+    image-orientation: initial;
+}
+
+.card{
+    height: 170px;
+    width: 100px;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 10%;
+}
+
+#opponentDeck .card{
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1em;
+}
+
+.card.turned{
+    background-image: url("uno.jpg");
+    image-orientation: initial;
+}
+
+.cardWorth{
+    color: Black;
+    margin-left:20%;
+    padding: 10%;
+    padding-top: 0em;
+    padding-bottom: 105px;
+    font-size: 4em;
+    font-weight: 300;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+     font-style: unset;
+}
+.Yellow{
+    background-color: rgb(229, 245, 7);
+}
+.Red{
+    background-color: rgb(160, 22, 4);
+}
+.Blue{
+    background-color: rgb(3, 51, 182);
+}
+.Green{
+    background-color: rgb(0, 128, 0);
+}
+
+#opponentDeck{
+    height: 200px;
+    width: 100%;
+    clear: both;
+    margin-bottom: -1%;
+}
+
+#opponentDeck .card{
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1em;
+}
+
+#drawPile{
+    height: 150px;
+    width: 75px;
+    float: left;
+    margin-left: 25%;
+    margin-bottom: 0%;
+    margin-top: 7%;
+}
+
+#drawPile .card{
+    display: inline-block;
+    margin-top: -3em;
+    margin-left: -5em;
+}
+
+#discardPile{
+    height: 150px;
+    width: 75px;
+    float: left;
+    margin-bottom: 0%;
+    margin-left: 25%;
+    margin-top: 7%;
+}
+
+#discardPile .card{
+    margin-top: -3em;
+    margin-left: -6em;
+}
+#playerDeck{
+    height: 200px;
+    width: 100%;
+    clear: both;
+    margin-bottom: -75%;
+}
+
+#playerDeck .card{
+    display: inline-block;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 3em;
+}

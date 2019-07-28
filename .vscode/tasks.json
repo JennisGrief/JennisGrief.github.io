@@ -5,7 +5,7 @@
     "tasks": [
         {
             "type": "typescript",
-            "tsconfig": "Aufgabe_11_Typescript/tsconfig.json",
+            "tsconfig": "Aufgabe_9_Typescript/tsconfig.json",
             "option": "watch",
             "problemMatcher": [
                 "$tsc-watch"
@@ -14,6 +14,22 @@
         {
             "type": "typescript",
             "tsconfig": "Dungeon-Example/tsconfig.json",
+            "option": "watch",
+            "problemMatcher": [
+                "$tsc-watch"
+            ]
+        },
+        {
+            "type": "typescript",
+            "tsconfig": "Aufgabe_11_All/tsconfig.json",
+            "option": "watch",
+            "problemMatcher": [
+                "$tsc-watch"
+            ]
+        },
+        {
+            "type": "typescript",
+            "tsconfig": "Aufgabe_10_Typescript/tsconfig.json",
             "option": "watch",
             "problemMatcher": [
                 "$tsc-watch"
