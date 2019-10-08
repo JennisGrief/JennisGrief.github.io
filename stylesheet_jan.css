@@ -1,0 +1,391 @@
+@charset "utf-8";
+/* CSS Document - Standardschriftgröße ist 16px d.h. wenn man 28 px will kann man 28px bzw. 175% bzw. 1.75rem hinschreiben. em richtet sich immer nach der aktuellen Schriftgröße in diesem Element*/
+
+* {
+	margin: 0; /*zum lernen: Alle Abstände werden auf 0 gesetzt. Padding sind die Abstände im Schriftfeld, Margin die Abstände zwischen dem Feld und dem was danach/davor kommt.*/
+	padding: 0;
+}
+
+
+body {
+	background: linear-gradient(#006d14, #CCFFCC);
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif"; /*wenn es die eine nicht gibt wird die nächste ausgewählt*/
+	color: #313131;
+}
+
+/* div */
+
+div#container {
+	background-color: #EBFFEB;
+}
+
+header {
+	background-color: #287935;
+	background-image: url("bilder/try.png");
+	background-repeat: no-repeat;
+	height:150px;
+	background-position: right bottom;
+}
+
+header img {
+	height: 150px;
+	width: auto;
+}
+
+/* header noch bearbeiten */
+
+/* Navigationsbefehle */
+
+nav {
+	background-color: #452C10;
+	color: #ffffff;
+}
+
+nav ul {
+	list-style-type: none;
+}
+
+nav li {
+	display: inline-block;
+}
+
+nav a {
+	color: #ffffff;
+	text-decoration: none;
+	font-size: 1rem;
+	text-transform: uppercase;
+	padding: 12px 20px;
+	display: inline-block;
+}
+
+nav a:hover, nav a:focus {
+	color:#C48137;
+	text-decoration: none;
+	background-color: rgba(255,255,255,0.1);
+}
+
+nav a.nav-aktiv {
+	background-color: rgba(255,255,255,0.4);
+}
+
+/* main */
+
+main {
+	background-color: #EBFFEB;
+	color: #313131;
+}
+
+aside {
+	background-color: #ffffff;
+	padding: 20px;
+	border-width:5px;
+	border-style: solid;
+	border-color: #fbce45;
+	line-height: 1.5em;
+}
+
+h1 {
+	color: #970621;				/* rot */
+	text-transform: uppercase;
+	font-size: 1.75rem;
+	margin-bottom: 1rem;
+}
+
+h2 {
+	color:#686767;				/* mittgelgrau */
+	font-size: 1.5rem;
+	margin-bottom: 0.75rem; /*Abstand nach unten, jeder Abstand kann einzeln eingetragen werden*/
+}
+
+h2#sprungmarke { /*ID: Der Hashtag ist äquivalent zu dem Punkt in der Klasse. */
+	letter-spacing:  0.1rem; /*größerer Abstand zw. den einzelnen Buchstaben*/
+}
+
+h3 {
+	color:#5B5B5B ;
+	font-size: 1.25rem;
+	margin-bottom: 0.5rem;
+}
+
+p {
+	margin-bottom: 1rem;
+}
+
+blockquote {
+	padding: 0.5rem;
+	border-color: black;
+	border-style: solid;
+}	
+
+blockquote p {
+	margin-bottom: 0.5rem;
+}
+
+/* Listen */
+
+ul {
+	list-style-type: square;
+	margin-bottom: 1rem;
+	margin-left: 25px; /*hier machen absolute px sinn*/
+}
+
+ol {
+	list-style-type: upper-alpha;
+	margin-bottom: 1rem;
+	margin-left: 25px;
+}
+
+ul ol {/*wenn sich in der unordered list eine ordered list befindet, dann bekommt diese jetzt andere definitionen: */
+	margin-bottom: 0;
+	list-style-type: lower-roman;
+}
+
+dl {
+	margin-bottom: 1rem;
+	
+}
+
+dt {
+	font-weight: bold; /*fett*/
+}
+}
+
+dd {
+	font-style: italic; /*kursiv*/
+	margin-bottom: 0.5rem;
+}
+
+/* Hover für die Bilder */
+
+.hovertitle {
+	background-color: #000000;
+	color: #ffffff;
+	display: inline-block;
+	font-family: Arial, sans-serif;
+	font-size: 24px;
+	margin: 8px;
+	max-width: 315px;
+	min-width: 230px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	width: 100%;
+}
+
+.hovertitle * {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: all 0.45s ease;
+	transition: all 0.45s ease;
+}
+
+.hovertitle:before, .hovertitle:after {
+	background-color: rgba(0, 0, 0, 0.5);
+	border-top: 50px solid rgba(0, 0, 0, 0.5);
+	border-bottom: 50px solid rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	content: '';
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	z-index: 1;
+	opacity: 0;
+}
+ main img {
+
+	width: 110px;
+	height: 110px;
+ }
+.hovertitle:before {
+	-webkit-transform: scaleY(2);
+	transform: scaleY(2);
+}
+
+.hovertitle:after {
+	-webkit-transform: scaleY(2);
+	transform: scaleY(2);
+}
+
+.hovertitle img {
+	vertical-align: top;
+	max-width: 100%;
+	backface-visibility: hidden;
+}
+
+.hovertitle figcaption {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	align-items: center;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	line-height: 1.1em;
+	opacity: 0;
+	z-index: 2;
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
+
+.hovertitle h3 {
+	font-size: 1em;
+	font-weight: 400;
+	letter-spacing: 1px;
+	margin: 0;
+	text-transform: uppercase;
+}
+
+.hovertitle h3 span {
+	display: block;
+	font-weight: 700;
+}
+
+.hovertitle a {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 3;
+}
+
+.hovertitle:hover > img, .hovertitle.hover > img {
+	opacity: 0.7;
+}
+
+.hovertitle:hover:before, .hovertitle.hover:before, .hovertitle:hover:after, .hovertitle.hover:after {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+}
+
+.hovertitle:hover figcaption, .hovertitle.hover figcaption {
+	opacity: 1;
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+
+
+
+@media screen and (min-width: 1200px) {
+	
+	div#container {
+		width: 1100px;
+		/*margin-top: 10px;
+		margin-right:auto;
+		margin-left: auto;*/
+		margin:10px auto 0 auto;
+		overflow: hidden;
+	}
+	
+	main {
+		width: 700px;
+		padding-right: 50px;
+		padding-left: 50px;
+		float: left;
+	}
+	
+	aside {
+		width: 200px;
+		float: left;
+		margin-top: 50px;
+	}
+	
+}
+
+
+@media screen and (min-width: 900px) and (max-width: 1199px) {
+		
+	div#container {
+		width: 900px;
+		/*margin-top: 10px;
+		margin-right:auto;
+		margin-left: auto;*/
+		margin:10px auto 0 auto;
+		overflow: hidden;
+	}
+	
+	main {
+		width: 400px;
+		padding-right: 50px;
+		padding-left: 50px;
+		float: left;
+	}
+	
+	aside {
+		width: 150px;
+		float: left;
+		margin-top: 50px;
+	}
+	
+}
+
+
+@media screen and (min-width: 769px) and (max-width: 899px) {
+	
+		
+	div#container {
+		width: auto;
+		/*margin-top: 10px;
+		margin-right:auto;
+		margin-left: auto;*/
+		margin:10px auto 0 auto;
+		overflow: hidden;
+	}
+	
+	main {
+		width: 80%;
+		padding-right: 50px;
+		padding-left: 50px;
+		float: left;
+	}
+	
+	aside {
+		width: 20%;
+		float: left;
+		margin-top: 50px;
+	}
+	
+}
+
+
+@media screen and (max-width: 768px) {
+	
+		
+	div#container {
+		width: auto;
+		/*margin-top: 10px;
+		margin-right:auto;
+		margin-left: auto;*/
+		margin:10px auto 0 auto;
+		overflow: hidden;
+	}
+	
+	main {
+		width: 80%;
+		padding-right: 30px;
+		padding-left: 30px;
+		float: left;
+	}
+	
+	aside {
+		width: 20%;
+		float: left;
+		margin-top: 50px;
+	}
+	
+}
+
+
+
+
+
+
+

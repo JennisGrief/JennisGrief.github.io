@@ -1,0 +1,50 @@
+body {
+    background-color: #1e4e1a85;
+}
+
+
+
+.cards {
+    border: black solid 3px;
+    width: 160px;
+    height: 224px;
+    margin: 25px;
+    font-weight: bold;
+    font-size: 5rem;
+    display: inline-block;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.cards * {
+    pointer-events: none;
+    background-color: #ffffff;
+}
+
+.rot{
+    color: red;
+}
+
+.schwarz{
+    color: black;
+}
+
+.symbol{
+    height: 40px;
+    margin: 25px 25px 0px 25px;
+}
+
+.kartenrückseite{
+    width: 160px;
+    height: 224px;
+    margin: 0px;
+}
+
+#Stapel {
+    margin-bottom: 70px;
+}
+
+#Deck {
+    width: 160px;
+    height: 224px;
+}
